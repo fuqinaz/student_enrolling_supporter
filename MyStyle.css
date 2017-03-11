@@ -1,0 +1,124 @@
+body {
+/*	background-image: url(11108.jpg)
+background-repeat:no-repeat;
+    background-size:100% 100vh;
+background-size: 100%;*/
+    background: black; /* For browsers that do not support gradients */    
+    /*background: -webkit-linear-gradient(left top, black, #555);*/ /* For Safari 5.1 to 6.0 */
+    /*background: -o-linear-gradient(bottom right, black, #555);*/ /* For Opera 11.1 to 12.0 */
+    /*background: -moz-linear-gradient(bottom right, black, #555);*/ /* For Firefox 3.6 to 15 */
+    /*background: linear-gradient(to bottom right, black, #555);*/ /* Standard syntax (must be last) */
+    font-weight: 300;
+    padding-bottom: 100px;
+    background-color: #154265 20%;
+    background-image: radial-gradient(farthest-side ellipse at 10% 0, #e0659b 60%, #4f3a85);
+    background-image: -webkit-radial-gradient(10% 0, farthest-side ellipse, #e0659b 60%, #4f3a85);
+    background-image: -moz-radial-gradient(10% 0, farthest-side ellipse, #e0659b 60%, #4f3a85);
+    background-attachment: fixed, fixed;
+}
+
+/*grey transparent background*/
+.widget {
+	border-radius: 3px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 12px 17px;
+    color: #f8f8f8;
+    background: rgba(51, 51, 51, 0.4);
+    margin-bottom: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: relative;
+
+}
+
+p {
+	color: #111
+}
+
+p.nav {
+
+}
+
+a, a:visited,a:active {
+	color: white;
+
+}
+
+a:hover { 
+    color: grey;
+}
+
+.genedbutton {
+
+}
+
+table.navbar {
+	float: right;
+}
+
+td,th {
+  border-right: solid 1px rgba(0, 0, 0, .05); 
+  border-left: solid 1px rgba(0, 0, 0, .05);
+  font-weight: bold;
+
+}
+
+.query_result {
+	overflow: scroll;
+	width: 100%;
+    height: 400px;
+}
+
+/*bootsrap overwrite*/
+
+/*class section information panel*/
+.panel-body {
+    padding: 7px 15px;
+}
+
+.btn {
+    transition: background-color 0.2s;
+}
+
+/*end bootstrap overwrite*/
+
+
+/*for adding glyphicon in form*/
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+/*end for adding glyphicon in form*/
+
+.form-control {
+  padding-right: 30px;
+}
+
+.form-control + .glyphicon {
+  position: absolute;
+  right: 0;
+  padding: 8px 27px;
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+    top:50%;
+}
