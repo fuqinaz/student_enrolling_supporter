@@ -6,6 +6,7 @@ require("page_header.php");
  <br>
  <?php
  $courseSearch = $_POST['courseSearch'];
+ if($courseSearch) echo "PingPing";
  echo $courseSearch;
  ?>
  <br>
@@ -13,7 +14,7 @@ require("page_header.php");
 	<INPUT TYPE="text" NAME="courseSearch" value="search course">
 	<INPUT TYPE="submit" value="Search">
 </FORM>
-</BODY> 
+</BODY>
 </HTML>
 
 <?php
@@ -32,21 +33,25 @@ $majorCode = $_SESSION['majorCode'];
 $year = 3;
 $semester = 2;
 
-$query = "SELECT * FROM bulletin WHERE 
-	FacCode='".$facCode."' AND 
-	MajorCode='".$majorCode."' AND 
-	AttendYear='".$attendYear."' AND 
-	Year='".$year."' AND 
-	Semester='".$semester."'";
-
-$result = mysql_query($query);
-
 $allCourse = array();
 
+require("check_new_planning.php");
 
-for($i=0; $list=mysql_fetch_array($result); $i++){
-	$allCourse[$i] = $list['CourseCode'];
+if($GLOBALS['checkNewFlag']==true) {
+  $query = "SELECT * FROM bulletin WHERE
+      FacCode='".$facCode."' AND
+      MajorCode='".$majorCode."' AND
+	    AttendYear='".$attendYear."' AND
+	    Year='".$year."' AND
+	    Semester='".$semester."'";
+
+      $result = mysql_query($query);
+
+      for($i=0; $list=mysql_fetch_array($result); $i++){
+	        $allCourse[$i] = $list['CourseCode'];
+      }
 }
+
 ?>
 
 <Table border = "1">
@@ -84,26 +89,31 @@ $allCourseDetail = array(
         "totalCredit"=>array(),
         "courseCondition"=>array(),
         "midDate"=>array(),
-        "midTime"=>array(), 
-        "finDate"=>array(), 
+        "midTime"=>array(),
+        "finDate"=>array(),
         "finTime"=>array(),
-        "section"=>array(), 
-        "teachType"=>array(), 
+        "section"=>array(),
+        "teachType"=>array(),
         "day"=>array(),
         "teachTime"=>array(),
         "building"=>array(),
-        "roomNo"=>array(), 
-        "instructor"=>array(), 
+        "roomNo"=>array(),
+        "instructor"=>array(),
         "totalRegis"=>array()
 	);
 
 
 for($i=0; $i<count($allCourse); $i++){
-	$query1 = "SELECT * FROM course WHERE CourseCode='".$allCourse[$i]."' AND Semester='".$semester."'";
+  if($GLOBALS['checkNewFlag']==true){
+    $query1 = "SELECT * FROM course WHERE CourseCode='".$allCourse[$i]."' AND Semester='".$semester."'";
+  }
+  else {
+    $query1 = "SELECT * FROM course WHERE CoursePID = '".$allCourse[$i]."'";
+  }
 	$result1 = mysql_query($query1);
 	for($j=count($allCourseDetail['coursePID']); $list1=mysql_fetch_array($result1); $j++){
-		$allCourseDetail['coursePID'][$j] = $list1['CoursePID'];
-		$allCourseDetail['courseCode'][$j] = $list1['CourseCode'];
+		    $allCourseDetail['coursePID'][$j] = $list1['CoursePID'];
+		    $allCourseDetail['courseCode'][$j] = $list1['CourseCode'];
         $allCourseDetail['nameThai'][$j] = $list1['NameThai'];
         $allCourseDetail['nameEng'][$j] = $list1['NameEng'];
         $allCourseDetail['facCode'][$j] = $list1['FacCode'];
@@ -114,16 +124,16 @@ for($i=0; $i<count($allCourse); $i++){
         $allCourseDetail['totalCredit'][$j] = $list1['TotalCredit'];
         $allCourseDetail['courseCondition'][$j] = $list1['CourseCondition'];
         $allCourseDetail['midDate'][$j] = $list1['MidDate'];
-        $allCourseDetail['midTime'][$j] = $list1['MidTime']; 
-        $allCourseDetail['finDate'][$j] = $list1['FinDate']; 
+        $allCourseDetail['midTime'][$j] = $list1['MidTime'];
+        $allCourseDetail['finDate'][$j] = $list1['FinDate'];
         $allCourseDetail['finTime'][$j] = $list1['FinTime'];
-        $allCourseDetail['section'][$j] = $list1['Section']; 
+        $allCourseDetail['section'][$j] = $list1['Section'];
         $allCourseDetail['teachType'][$j] = $list1['TeachType'];
         $allCourseDetail['day'][$j] = $list1['Day'];
         $allCourseDetail['teachTime'][$j] = $list1['TeachTime'];
         $allCourseDetail['building'][$j] = $list1['Building'];
         $allCourseDetail['roomNo'][$j] = $list1['RoomNo'];
-        $allCourseDetail['instructor'][$j] = $list1['Instructor']; 
+        $allCourseDetail['instructor'][$j] = $list1['Instructor'];
         $allCourseDetail['totalRegis'][$j] = $list1['TotalRegis'];
 	}
 }
@@ -132,6 +142,7 @@ echo count($allCourseDetail['coursePID'])."<br>";
 ?>
 <table width="600" border="1">
   <tr>
+    <th>Course PID</th>
     <th width="90"> <div align="center">Course Code </div></th>
     <th width="90"> <div align="center">Name Thai </div></th>
     <th width="90"> <div align="center">Name Eng </div></th>
@@ -155,11 +166,12 @@ echo count($allCourseDetail['coursePID'])."<br>";
     <th width="90"> <div align="center">instructor</div></th>
     <th width="90"> <div align="center">totalRegis</div></th>
   </tr>
-  
+
 <?php
 for($i=0; $i<count($allCourseDetail['coursePID']); $i++){
 ?>
 	<TR>
+    <td><?php echo $allCourseDetail['coursePID'][$i];?></td>
 		<TD><?php echo $allCourseDetail['courseCode'][$i];?></TD>
 		<TD><?php echo $allCourseDetail['nameThai'][$i];?></TD>
 		<TD><?php echo $allCourseDetail['nameEng'][$i];?></TD>
