@@ -2,6 +2,7 @@
 session_start();
 require("connection.php");
 
+ob_start();
 $userID=$_POST['userID'];
 $password=$_POST['password'];
 
@@ -25,6 +26,6 @@ else
 {
 	header("refresh: 0; url=login.php");
 }
-
+ob_end_flush();
 
 ?>
