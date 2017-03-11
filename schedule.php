@@ -5,9 +5,10 @@ require("page_header.php");
 <HTML>
  <br>
  <?php
+ //Search Course
  $courseSearch = $_POST['courseSearch'];
- if($courseSearch) echo "PingPing";
  echo $courseSearch;
+
  ?>
  <br>
 <FORM METHOD=POST ACTION="schedule.php">
@@ -26,9 +27,9 @@ $userID=$_SESSION['userID'];
 
 //$attendYear = substr($userID, 0, 2)-43+2000;
 $attendYear = 2015;
-echo $attendYear."<br>";
+echo "Attend Year (Fix ไว้ ยังไม่ได้ดึงจากฐานข้อมูล) : ".$attendYear."<br>";
 $facCode = substr($userID, 8, 2);
-echo $facCode;
+echo "Faculty code (ดึงจากรหัสนิสิต) : ".$facCode."<br>";
 $majorCode = $_SESSION['majorCode'];
 $year = 3;
 $semester = 2;
@@ -53,27 +54,6 @@ if($GLOBALS['checkNewFlag']==true) {
 }
 
 ?>
-
-<Table border = "1">
-<TR>
-	<th>Faculty Code</th>
-    <th>Major Code</th>
-    <th>Attend Year</th>
-    <th>Year</th>
-    <th>Semester</th>
-    <th>Course Code</th>
-    <th>Credit</th>
-</TR>
-<?php
-for($i=0; $i<count($allCourse); $i++){
-?>
-	<tr>
-		<td><?php echo $allCourse[$i];?></td>
-	</tr>
-<?php
-}
-?>
-</Table>
 
 <?php
 $allCourseDetail = array(
@@ -138,33 +118,35 @@ for($i=0; $i<count($allCourse); $i++){
 	}
 }
 
-echo count($allCourseDetail['coursePID'])."<br>";
+//echo "ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCourseDetail[ข้อมูลที่ต้องการ][ลำดับ]";
 ?>
+ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCourseDetail[ข้อมูลที่ต้องการ][ลำดับ] เช่น <br>
+  $allCourseDetail['nameThai'][3] แสดงชื่อวิชาลำดับที่ 4 ภาษาไทย
 <table width="600" border="1">
   <tr>
     <th>Course PID</th>
-    <th width="90"> <div align="center">Course Code </div></th>
-    <th width="90"> <div align="center">Name Thai </div></th>
-    <th width="90"> <div align="center">Name Eng </div></th>
-    <th width="90"> <div align="center">facCode</div></th>
-    <th width="90"> <div align="center">program</div></th>
-    <th width="90"> <div align="center">acadYear</div></th>
-    <th width="90"> <div align="center">semester</div></th>
-    <th width="90"> <div align="center">remark</div></th>
-    <th width="90"> <div align="center">totalCredit</div></th>
-    <th width="90"> <div align="center">courseCon</div></th>
-    <th width="90"> <div align="center">midDate</div></th>
-    <th width="90"> <div align="center">midTime</div></th>
-    <th width="90"> <div align="center">finDate</div></th>
-    <th width="90"> <div align="center">finTime</div></th>
-    <th width="90"> <div align="center">section</div></th>
-    <th width="90"> <div align="center">teachType</div></th>
-    <th width="90"> <div align="center">day</div></th>
-    <th width="90"> <div align="center">teachTime</div></th>
-    <th width="90"> <div align="center">building</div></th>
-    <th width="90"> <div align="center">roomNo</div></th>
-    <th width="90"> <div align="center">instructor</div></th>
-    <th width="90"> <div align="center">totalRegis</div></th>
+    <th> <div align="center">Course Code </div></th>
+    <th> <div align="center">Name Thai </div></th>
+    <th> <div align="center">Name Eng </div></th>
+    <th> <div align="center">facCode</div></th>
+    <th> <div align="center">program</div></th>
+    <th> <div align="center">acadYear</div></th>
+    <th> <div align="center">semester</div></th>
+    <th> <div align="center">remark</div></th>
+    <th> <div align="center">totalCredit</div></th>
+    <th> <div align="center">courseCon</div></th>
+    <th> <div align="center">midDate</div></th>
+    <th> <div align="center">midTime</div></th>
+    <th> <div align="center">finDate</div></th>
+    <th> <div align="center">finTime</div></th>
+    <th> <div align="center">section</div></th>
+    <th> <div align="center">teachType</div></th>
+    <th> <div align="center">day</div></th>
+    <th> <div align="center">teachTime</div></th>
+    <th> <div align="center">building</div></th>
+    <th> <div align="center">roomNo</div></th>
+    <th> <div align="center">instructor</div></th>
+    <th> <div align="center">totalRegis</div></th>
   </tr>
 
 <?php
