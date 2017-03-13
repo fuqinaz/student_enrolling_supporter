@@ -289,48 +289,53 @@ require("page_header.php");
             <!-- End search tool div -->
 
             <!-- Query result -->
-            <div class="query_result widget row" id="query_result" style="position: relative;">
+            
+            <div class="row" id="query_result" style="position: relative;">
+                <section class="widget">
+                    <div class="query_result">
 
-                <div style="margin-top : 10px;
-                            padding: 15px;
-                            position: relative;">
-                <!-- <section class="widget"> -->
+                        <div style="margin-top : 10px;
+                                    padding: 15px;
+                                    position: relative;">
+                        <!-- <section class="widget"> -->
 
-                <div class="well" data-toggle="tooltip" title="Select to find">Basic Well</div>
-                <!-- <div class="panel-group">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <p class="panel-title">
-                                <p> -
-                                <a data-toggle="collapse" href="#collapse1">2104111 APPICATION DEVELOPMENT</a>
-                            </p>
+                        <div class="well" data-toggle="tooltip" title="Select to find">Basic Well</div>
+                        <!-- <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <p class="panel-title">
+                                        <p> -
+                                        <a data-toggle="collapse" href="#collapse1">2104111 APPICATION DEVELOPMENT</a>
+                                    </p>
+                                </div>
+                            <div id="collapse1" class="panel-collapse collapse" >
+                                <div class="panel-body">Sec 1 PLC WED 9:00-12:00 </div>
+                                <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
+                                <!- <div class="panel-footer">Panel Footer</div>
+                                    </p>
+                                </div>
+                            </div>
+                        
+                        </div> -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">2104111 APPICATION DEVELOPMENT</div>
+                            <div class="panel-body">Sec 1 PLC WED 9:00-12:00</div>
+                            <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
                         </div>
-                    <div id="collapse1" class="panel-collapse collapse" >
-                        <div class="panel-body">Sec 1 PLC WED 9:00-12:00 </div>
-                        <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
-                        <!- <div class="panel-footer">Panel Footer</div>
-                            </p>
-                        </div>
+               
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div>
                     </div>
-                
-                </div> -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">2104111 APPICATION DEVELOPMENT</div>
-                    <div class="panel-body">Sec 1 PLC WED 9:00-12:00</div>
-                    <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
-                </div>
-       
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
-                <div class="well">Basic Well</div>
+                    <!-- end query result div -->
 
-                <!-- </section> -->
+                </section>
                 </div>
             </div>
             <!-- End Query result -->
@@ -372,6 +377,21 @@ require("page_header.php");
 </BODY>
 
 </HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <?php
 //for show schedule
