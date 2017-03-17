@@ -19,11 +19,13 @@ if($list=mysql_fetch_array($result))
   	$_SESSION['userPic']=$list['Pic'];
   	$_SESSION['userType']=$list['UserType'];
    	header("refresh: 0; url=schedule.php");
+    ob_end_flush();
 }
 
 else
 {
 	header("refresh: 0; url=login.php");
+  ob_end_flush();
 }
 
 
