@@ -11,9 +11,9 @@ $query = "SELECT * FROM planning WHERE StudentID = '$userID' AND Year = '$year' 
 $result = mysql_query($query);
 
 for($i=0; $list=mysql_fetch_array($result); $i++){
-  $allCourse[$i]=$list['CoursePID'];
+  $allCourses[$i]=$list['CoursePID'];
 }
 
 $GLOBALS['checkNewFlag']=true;
-if(count($allCourse)>0) $GLOBALS['checkNewFlag'] = false;
+if(count($allCourses)>0) $GLOBALS['checkNewFlag'] = false;
 ?>

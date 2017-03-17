@@ -206,14 +206,6 @@ require("page_header.php");
 
 
 <!-- for search -->
-<!-- <br> -->
-<?php
-$check= $_POST['courseSearch'];
-if($check) echo "PingPing";
-echo $check;
-?>
-<!-- <br> -->
-
 <!-- end -->
 
 
@@ -351,6 +343,144 @@ echo $check;
 
     <!-- End Scheduler and search engine -->
 
+<br>
+<?php
+//Search Course
+$courseSearch = $_POST['courseSearch'];
+echo $courseSearch;
+
+?>
+<br>
+<FORM METHOD=POST ACTION="schedule.php">
+	<INPUT TYPE="text" NAME="courseSearch" value="Search Course">
+	<INPUT TYPE="submit" value="Search">
+</FORM>
+
+<?php
+//show searched course
+$searchedCoursesDetails = array(
+    "coursePID"=>array(),
+    "courseCode"=>array(),
+    "nameThai"=>array(),
+    "nameEng"=>array(),
+    "facCode"=>array(),
+    "program"=>array(),
+    "acadYear"=>array(),
+    "semester"=>array(),
+    "remark"=>array(),
+    "totalCredit"=>array(),
+    "courseCondition"=>array(),
+    "midDate"=>array(),
+    "midTime"=>array(),
+    "finDate"=>array(),
+    "finTime"=>array(),
+    "section"=>array(),
+    "teachType"=>array(),
+    "day"=>array(),
+    "teachTime"=>array(),
+    "building"=>array(),
+    "roomNo"=>array(),
+    "instructor"=>array(),
+    "totalRegis"=>array()
+	);
+require("connection.php");
+$semester = 2;
+$query = "SELECT * FROM course WHERE
+    Semester = '".$semester."' AND
+    (NameEng LIKE '%".$courseSearch."%' OR
+    NameThai LIKE '%".$courseSearch."%' OR
+    CourseCode LIKE '%".$courseSearch."%')";
+$result = mysql_query($query);
+for($i=0; $list=mysql_fetch_array($result); $i++){
+    $searchedCoursesDetails['coursePID'][$i] = $list['CoursePID'];
+    $searchedCoursesDetails['courseCode'][$i] = $list['CourseCode'];
+    $searchedCoursesDetails['nameThai'][$i] = $list['NameThai'];
+    $searchedCoursesDetails['nameEng'][$i] = $list['NameEng'];
+    $searchedCoursesDetails['facCode'][$i] = $list['FacCode'];
+    $searchedCoursesDetails['program'][$i] = $list['Program'];
+    $searchedCoursesDetails['acadYear'][$i] = $list['AcadYear'];
+    $searchedCoursesDetails['semester'][$i] = $list['Semester'];
+    $searchedCoursesDetails['remark'][$i] = $list['Remark'];
+    $searchedCoursesDetails['totalCredit'][$i] = $list['TotalCredit'];
+    $searchedCoursesDetails['courseCondition'][$i] = $list['CourseCondition'];
+    $searchedCoursesDetails['midDate'][$i] = $list['MidDate'];
+    $searchedCoursesDetails['midTime'][$i] = $list['MidTime'];
+    $searchedCoursesDetails['finDate'][$i] = $list['FinDate'];
+    $searchedCoursesDetails['finTime'][$i] = $list['FinTime'];
+    $searchedCoursesDetails['section'][$i] = $list['Section'];
+    $searchedCoursesDetails['teachType'][$i] = $list['TeachType'];
+    $searchedCoursesDetails['day'][$i] = $list['Day'];
+    $searchedCoursesDetails['teachTime'][$i] = $list['TeachTime'];
+    $searchedCoursesDetails['building'][$i] = $list['Building'];
+    $searchedCoursesDetails['roomNo'][$i] = $list['RoomNo'];
+    $searchedCoursesDetails['instructor'][$i] = $list['Instructor'];
+    $searchedCoursesDetails['totalRegis'][$i] = $list['TotalRegis'];
+}
+?>
+
+
+<!--just show searchedCoures-->
+ <table border="1">
+   <tr>
+     <th> <div align="center">Course PID</div></th>
+     <th> <div align="center">Course Code </div></th>
+     <th> <div align="center">Name Thai </div></th>
+     <th> <div align="center">Name Eng </div></th>
+     <th> <div align="center">facCode</div></th>
+     <th> <div align="center">program</div></th>
+     <th> <div align="center">acadYear</div></th>
+     <th> <div align="center">semester</div></th>
+     <th> <div align="center">remark</div></th>
+     <th> <div align="center">totalCredit</div></th>
+     <th> <div align="center">courseCon</div></th>
+     <th> <div align="center">midDate</div></th>
+     <th> <div align="center">midTime</div></th>
+     <th> <div align="center">finDate</div></th>
+     <th> <div align="center">finTime</div></th>
+     <th> <div align="center">section</div></th>
+     <th> <div align="center">teachType</div></th>
+     <th> <div align="center">day</div></th>
+     <th> <div align="center">teachTime</div></th>
+     <th> <div align="center">building</div></th>
+     <th> <div align="center">roomNo</div></th>
+     <th> <div align="center">instructor</div></th>
+     <th> <div align="center">totalRegis</div></th>
+   </tr>
+
+ <?php
+ for($i=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
+ ?>
+ 	<TR>
+    <td><?php echo $searchedCoursesDetails['coursePID'][$i];?></td>
+ 		<TD><?php echo $searchedCoursesDetails['courseCode'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['nameThai'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['nameEng'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['facCode'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['program'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['acadYear'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['semester'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['remark'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['totalCredit'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['courseCondition'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['midDate'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['midTime'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['finDate'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['finTime'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['section'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['teachType'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['day'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['teachTime'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['building'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['roomNo'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['instructor'][$i];?></TD>
+ 		<TD><?php echo $searchedCoursesDetails['totalRegis'][$i];?></TD>
+ 	</TR>
+ <?php
+ }
+ ?>
+ </table>
+
+
 
 
 <?php
@@ -369,7 +499,7 @@ $majorCode = $_SESSION['majorCode'];
 $year = 3;
 $semester = 2;
 
-$allCourse = array();
+$allCourses = array();
 
 require("check_new_planning.php");
 
@@ -384,82 +514,82 @@ if($GLOBALS['checkNewFlag']==true) {
       $result = mysql_query($query);
 
       for($i=0; $list=mysql_fetch_array($result); $i++){
-	        $allCourse[$i] = $list['CourseCode'];
+	        $allCourses[$i] = $list['CourseCode'];
       }
 }
 
 ?>
 
 <?php
-$allCourseDetail = array(
-		"coursePID"=>array(),
-        "courseCode"=>array(),
-        "nameThai"=>array(),
-        "nameEng"=>array(),
-        "facCode"=>array(),
-        "program"=>array(),
-        "acadYear"=>array(),
-        "semester"=>array(),
-        "remark"=>array(),
-        "totalCredit"=>array(),
-        "courseCondition"=>array(),
-        "midDate"=>array(),
-        "midTime"=>array(),
-        "finDate"=>array(),
-        "finTime"=>array(),
-        "section"=>array(),
-        "teachType"=>array(),
-        "day"=>array(),
-        "teachTime"=>array(),
-        "building"=>array(),
-        "roomNo"=>array(),
-        "instructor"=>array(),
-        "totalRegis"=>array()
+$allCoursesDetails = array(
+    "coursePID"=>array(),
+    "courseCode"=>array(),
+    "nameThai"=>array(),
+    "nameEng"=>array(),
+    "facCode"=>array(),
+    "program"=>array(),
+    "acadYear"=>array(),
+    "semester"=>array(),
+    "remark"=>array(),
+    "totalCredit"=>array(),
+    "courseCondition"=>array(),
+    "midDate"=>array(),
+    "midTime"=>array(),
+    "finDate"=>array(),
+    "finTime"=>array(),
+    "section"=>array(),
+    "teachType"=>array(),
+    "day"=>array(),
+    "teachTime"=>array(),
+    "building"=>array(),
+    "roomNo"=>array(),
+    "instructor"=>array(),
+    "totalRegis"=>array()
 	);
 
 
-for($i=0; $i<count($allCourse); $i++){
+for($i=0; $i<count($allCourses); $i++){
   if($GLOBALS['checkNewFlag']==true){
-    $query1 = "SELECT * FROM course WHERE CourseCode='".$allCourse[$i]."' AND Semester='".$semester."'";
+    $query1 = "SELECT * FROM course WHERE CourseCode='".$allCourses[$i]."' AND Semester='".$semester."'";
   }
   else {
-    $query1 = "SELECT * FROM course WHERE CoursePID = '".$allCourse[$i]."'";
+    $query1 = "SELECT * FROM course WHERE CoursePID = '".$allCourses[$i]."'";
   }
 	$result1 = mysql_query($query1);
-	for($j=count($allCourseDetail['coursePID']); $list1=mysql_fetch_array($result1); $j++){
-		    $allCourseDetail['coursePID'][$j] = $list1['CoursePID'];
-		    $allCourseDetail['courseCode'][$j] = $list1['CourseCode'];
-        $allCourseDetail['nameThai'][$j] = $list1['NameThai'];
-        $allCourseDetail['nameEng'][$j] = $list1['NameEng'];
-        $allCourseDetail['facCode'][$j] = $list1['FacCode'];
-        $allCourseDetail['program'][$j] = $list1['Program'];
-        $allCourseDetail['acadYear'][$j] = $list1['AcadYear'];
-        $allCourseDetail['semester'][$j] = $list1['Semester'];
-        $allCourseDetail['remark'][$j] = $list1['Remark'];
-        $allCourseDetail['totalCredit'][$j] = $list1['TotalCredit'];
-        $allCourseDetail['courseCondition'][$j] = $list1['CourseCondition'];
-        $allCourseDetail['midDate'][$j] = $list1['MidDate'];
-        $allCourseDetail['midTime'][$j] = $list1['MidTime'];
-        $allCourseDetail['finDate'][$j] = $list1['FinDate'];
-        $allCourseDetail['finTime'][$j] = $list1['FinTime'];
-        $allCourseDetail['section'][$j] = $list1['Section'];
-        $allCourseDetail['teachType'][$j] = $list1['TeachType'];
-        $allCourseDetail['day'][$j] = $list1['Day'];
-        $allCourseDetail['teachTime'][$j] = $list1['TeachTime'];
-        $allCourseDetail['building'][$j] = $list1['Building'];
-        $allCourseDetail['roomNo'][$j] = $list1['RoomNo'];
-        $allCourseDetail['instructor'][$j] = $list1['Instructor'];
-        $allCourseDetail['totalRegis'][$j] = $list1['TotalRegis'];
+	for($j=count($allCoursesDetails['coursePID']); $list1=mysql_fetch_array($result1); $j++){
+		    $allCoursesDetails['coursePID'][$j] = $list1['CoursePID'];
+		    $allCoursesDetails['courseCode'][$j] = $list1['CourseCode'];
+        $allCoursesDetails['nameThai'][$j] = $list1['NameThai'];
+        $allCoursesDetails['nameEng'][$j] = $list1['NameEng'];
+        $allCoursesDetails['facCode'][$j] = $list1['FacCode'];
+        $allCoursesDetails['program'][$j] = $list1['Program'];
+        $allCoursesDetails['acadYear'][$j] = $list1['AcadYear'];
+        $allCoursesDetails['semester'][$j] = $list1['Semester'];
+        $allCoursesDetails['remark'][$j] = $list1['Remark'];
+        $allCoursesDetails['totalCredit'][$j] = $list1['TotalCredit'];
+        $allCoursesDetails['courseCondition'][$j] = $list1['CourseCondition'];
+        $allCoursesDetails['midDate'][$j] = $list1['MidDate'];
+        $allCoursesDetails['midTime'][$j] = $list1['MidTime'];
+        $allCoursesDetails['finDate'][$j] = $list1['FinDate'];
+        $allCoursesDetails['finTime'][$j] = $list1['FinTime'];
+        $allCoursesDetails['section'][$j] = $list1['Section'];
+        $allCoursesDetails['teachType'][$j] = $list1['TeachType'];
+        $allCoursesDetails['day'][$j] = $list1['Day'];
+        $allCoursesDetails['teachTime'][$j] = $list1['TeachTime'];
+        $allCoursesDetails['building'][$j] = $list1['Building'];
+        $allCoursesDetails['roomNo'][$j] = $list1['RoomNo'];
+        $allCoursesDetails['instructor'][$j] = $list1['Instructor'];
+        $allCoursesDetails['totalRegis'][$j] = $list1['TotalRegis'];
 	}
 }
 
-//echo "ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCourseDetail[ข้อมูลที่ต้องการ][ลำดับ]";
+//echo "ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCoursesDetail[ข้อมูลที่ต้องการ][ลำดับ]";
 ?>
-ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCourseDetail[ข้อมูลที่ต้องการ][ลำดับ] เช่น <br>
-  $allCourseDetail['nameThai'][3] แสดงชื่อวิชาลำดับที่ 4 ภาษาไทย
-<table width="600" border="1">
+ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCoursesDetail[ข้อมูลที่ต้องการ][ลำดับ] เช่น <br>
+  $allCoursesDetail['nameThai'][3] แสดงชื่อวิชาลำดับที่ 4 ภาษาไทย
+<table border="1">
   <tr>
-    <th>Course PID</th>
+    <th> <div align="center">Course PID</div></th>
     <th> <div align="center">Course Code </div></th>
     <th> <div align="center">Name Thai </div></th>
     <th> <div align="center">Name Eng </div></th>
@@ -485,32 +615,32 @@ for($i=0; $i<count($allCourse); $i++){
   </tr>
 
 <?php
-for($i=0; $i<count($allCourseDetail['coursePID']); $i++){
+for($i=0; $i<count($allCoursesDetails['coursePID']); $i++){
 ?>
 	<TR>
-    <td><?php echo $allCourseDetail['coursePID'][$i];?></td>
-		<TD><?php echo $allCourseDetail['courseCode'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['nameThai'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['nameEng'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['facCode'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['program'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['acadYear'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['semester'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['remark'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['totalCredit'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['courseCondition'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['midDate'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['midTime'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['finDate'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['finTime'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['section'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['teachType'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['day'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['teachTime'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['building'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['roomNo'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['instructor'][$i];?></TD>
-		<TD><?php echo $allCourseDetail['totalRegis'][$i];?></TD>
+    <td><?php echo $allCoursesDetails['coursePID'][$i];?></td>
+		<TD><?php echo $allCoursesDetails['courseCode'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['nameThai'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['nameEng'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['facCode'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['program'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['acadYear'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['semester'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['remark'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['totalCredit'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['courseCondition'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['midDate'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['midTime'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['finDate'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['finTime'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['section'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['teachType'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['day'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['teachTime'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['building'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['roomNo'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['instructor'][$i];?></TD>
+		<TD><?php echo $allCoursesDetails['totalRegis'][$i];?></TD>
 	</TR>
 <?php
 }
