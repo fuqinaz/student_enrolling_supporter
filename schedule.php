@@ -15,7 +15,7 @@ require("page_header.php");
     <!-- end dhtmlx -->
 
    <!---BootStrap-->
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
         <!-- REsponsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
@@ -34,7 +34,7 @@ require("page_header.php");
     <!-- code for hover bubble -->
     <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
     <!-- end code for hover bubble -->
@@ -54,7 +54,7 @@ require("page_header.php");
                         <!-- <button type="button" class="btn btn-default"> -->
                    <!--      <a href="schedule.html"><label>&nbsp;&nbsp;&nbsp;&nbsp;Scheduler&nbsp;&nbsp;&nbsp;&nbsp;</label></a> -->
                         <!-- </button> -->
-                        <!-- 
+                        <!--
                     </td>
                     <td>
                         <a href="grade_planner.html"><label>&nbsp;&nbsp;&nbsp;&nbsp;Grade Planner&nbsp;&nbsp;&nbsp;&nbsp;</label></a>
@@ -64,14 +64,14 @@ require("page_header.php");
                         &nbsp;&nbsp;
                         <a href="#">
                             <span class="glyphicon glyphicon-user"></span>
-                        </a> 
+                        </a>
                         &nbsp;&nbsp;
                     </td>
                 </tr>
             </table> -->
       <!--   </div>
-        <div class="col-md-1"></div>   -->  
-        
+        <div class="col-md-1"></div>   -->
+
     <!-- </div>  -->
     <!-- End Web Nav -->
 
@@ -85,13 +85,13 @@ require("page_header.php");
         <div class="col-md-7 widget">
 
             <!-- BootStrap Scheduler -->
-            <div class="table-responsive">          
+            <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr id="thead_parent">
                             <th style="width: 15%;">Date\Time</th>
                             <!-- <th id="thead_child1">&nbsp;&nbsp;</th> -->
-                        
+
                         </tr>
                     </thead>
 
@@ -100,39 +100,39 @@ require("page_header.php");
                     </script>
  -->
                     <tbody id="tbody_parent">
-                        
+
                         <!-- Real table (write javascript table id = scheduler_here) -->
                         <!-- <div class="scheduler_here"> -->
-                           
+
                         <!-- </div> -->
                         <!-- End real schedule -->
 
-                        
+
 
                         <!-- table for style testing -->
                         <!-- Each td = 30 min -->
                         <tr id="mon_parent" style="width: 15%">
 
                             <!-- <th >&nbsp;&nbsp;</th> -->
-                        
-                        
+
+
 
                             <td>MON</td>
                             <td></td>
 
                             <!-- <th></th> -->
-                            <td colspan="5" style="border-radius: 10px; 
+                            <td colspan="5" style="border-radius: 10px;
                                                     /*border-color: #333;
                                                     border-style: solid;
                                                     border-width: 5px;*/
-                                                    background-color: rgba(40, 40, 40, .4); 
+                                                    background-color: rgba(40, 40, 40, .4);
                                                     padding: 10px;
                                                     text-align: left;
 
                                                     width:15%">
                                 2104111<br>
                                 app dev ie<br>
-                                
+
                             </td>
                             <td></td>
                             <td></td>
@@ -177,7 +177,7 @@ require("page_header.php");
                     </tbody>
                 </table>
 
-              
+
 
               </div>
             <!-- End Bootstrap Scheduler -->
@@ -194,7 +194,7 @@ require("page_header.php");
 
         <!-- space between schedule and search engine -->
         <div class="col-md-1">
-            
+
         </div>
 
 
@@ -206,58 +206,54 @@ require("page_header.php");
 
 
 <!-- for search -->
-     <!-- <br> -->
-     <?php
-     $courseSearch = $_POST['courseSearch'];
-     if($courseSearch) echo "PingPing";
-     echo $courseSearch;
-     ?>
-     <!-- <br> -->
+<!-- <br> -->
+<?php
+$check= $_POST['courseSearch'];
+if($check) echo "PingPing";
+echo $check;
+?>
+<!-- <br> -->
 
 <!-- end -->
 
 
 
+<!-- Search tool div -->
+<div class="row">
+  <section class="widget">
+    <!-- Search form -->
+    <form>
+      <!--   <table>
+      <tr>
+      <!-- Search Form -->
+      <td>
+        <div class="form-group">
 
+          <label for="subsearch">Search from keywords</label>
+          <!--  <input type="subsearch" class="form-control" id="subsearch">
+          &nbsp;&nbsp; -->
+          <!-- <input class="form-control" type="search" /> -->
+          <!-- <span class="glyphicon glyphicon-search"></span> -->
+          <form METHOD=POST ACTION="schedule.php">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" NAME="courseSearch" value="search">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit" value="Search">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
 
-
-            <!-- Search tool div -->
-            <div class="row">
-                <section class="widget">
-     
-                    <!-- Search form -->
-                    <form>
-                      <!--   <table>
-                            <tr>
-                                <!-- Search Form -->
-                                <td> 
-                                    <div class="form-group">
-
-                                        <label for="subsearch">Search from keywords</label>
-                                     <!--  <input type="subsearch" class="form-control" id="subsearch">
-                                      &nbsp;&nbsp; -->
-                                        <!-- <input class="form-control" type="search" /> -->
-                                        <!-- <span class="glyphicon glyphicon-search"></span> -->
-                                        <form METHOD=POST ACTION="schedule.php">
-                                          <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" NAME="courseSearch" value="search course">
-                                            <div class="input-group-btn">
-                                                <button class="btn btn-default" type="submit" value="Search">
-                                                    <i class="glyphicon glyphicon-search"></i>
-                                                </button>
-                                            </div>
-                                          </div>
-                                        </form>
-
-                                    </div>
-                                <!-- </td> -->
-                                <!-- Search button -->
-                               <!--  <td>
-                                    <button type="submit" class="btn btn-default">Search</button>
-                                </td> -->
-                            <!-- </tr>
-                        </table> -->
-                    </form>
+  </div>
+  <!-- </td> -->
+  <!-- Search button -->
+  <!--  <td>
+  <button type="submit" class="btn btn-default">Search</button>
+</td> -->
+<!-- </tr>
+</table> -->
+</form>
 
 
                             <!--         <div class="form-group has-success has-feedback">
@@ -281,7 +277,7 @@ require("page_header.php");
                                 <option>Interdisciplinary</option>
                             </select>
                         </div>
-                    </div>    
+                    </div>
             <!-- End gened search button -->
                 </section>
 
@@ -289,7 +285,7 @@ require("page_header.php");
             <!-- End search tool div -->
 
             <!-- Query result -->
-            
+
             <div class="row" id="query_result" style="position: relative;">
                 <section class="widget">
                     <div class="query_result">
@@ -315,14 +311,14 @@ require("page_header.php");
                                     </p>
                                 </div>
                             </div>
-                        
+
                         </div> -->
                         <div class="panel panel-default">
                             <div class="panel-heading">2104111 APPICATION DEVELOPMENT</div>
                             <div class="panel-body">Sec 1 PLC WED 9:00-12:00</div>
                             <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
                         </div>
-               
+
                         <div class="well">Basic Well</div>
                         <div class="well">Basic Well</div>
                         <div class="well">Basic Well</div>
@@ -342,54 +338,18 @@ require("page_header.php");
 
 
 
-        
+
         </div>
-       
+
         <!-- end search engine div -->
 
-        
+
         </section>
     </div>
     </div>
-    
+
 
     <!-- End Scheduler and search engine -->
-
-
-
-
-
-<!-- for search -->
-     <br>
-     <?php
-     $courseSearch = $_POST['courseSearch'];
-     if($courseSearch) echo "PingPing";
-     echo $courseSearch;
-     ?>
-     <br>
-    <FORM METHOD=POST ACTION="schedule.php">
-    	<INPUT TYPE="text" NAME="courseSearch" value="search course">
-    	<INPUT TYPE="submit" value="Search">
-    </FORM>
-
-
-
-</BODY>
-
-</HTML>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -402,9 +362,9 @@ $userID=$_SESSION['userID'];
 
 //$attendYear = substr($userID, 0, 2)-43+2000;
 $attendYear = 2015;
-echo $attendYear."<br>";
+echo "Attend Year (Fix ไว้ ยังไม่ได้ดึงจากฐานข้อมูล) : ".$attendYear."<br>";
 $facCode = substr($userID, 8, 2);
-echo $facCode;
+echo "Faculty code (ดึงจากรหัสนิสิต) : ".$facCode."<br>";
 $majorCode = $_SESSION['majorCode'];
 $year = 3;
 $semester = 2;
@@ -429,27 +389,6 @@ if($GLOBALS['checkNewFlag']==true) {
 }
 
 ?>
-
-<Table border = "1">
-<TR>
-	<th>Faculty Code</th>
-    <th>Major Code</th>
-    <th>Attend Year</th>
-    <th>Year</th>
-    <th>Semester</th>
-    <th>Course Code</th>
-    <th>Credit</th>
-</TR>
-<?php
-for($i=0; $i<count($allCourse); $i++){
-?>
-	<tr>
-		<td><?php echo $allCourse[$i];?></td>
-	</tr>
-<?php
-}
-?>
-</Table>
 
 <?php
 $allCourseDetail = array(
@@ -514,33 +453,35 @@ for($i=0; $i<count($allCourse); $i++){
 	}
 }
 
-echo count($allCourseDetail['coursePID'])."<br>";
+//echo "ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCourseDetail[ข้อมูลที่ต้องการ][ลำดับ]";
 ?>
+ตารางนี้คือตารางเรียนที่วางแผนไว้ ตัวแปรชื่อ $allCourseDetail[ข้อมูลที่ต้องการ][ลำดับ] เช่น <br>
+  $allCourseDetail['nameThai'][3] แสดงชื่อวิชาลำดับที่ 4 ภาษาไทย
 <table width="600" border="1">
   <tr>
     <th>Course PID</th>
-    <th width="90"> <div align="center">Course Code </div></th>
-    <th width="90"> <div align="center">Name Thai </div></th>
-    <th width="90"> <div align="center">Name Eng </div></th>
-    <th width="90"> <div align="center">facCode</div></th>
-    <th width="90"> <div align="center">program</div></th>
-    <th width="90"> <div align="center">acadYear</div></th>
-    <th width="90"> <div align="center">semester</div></th>
-    <th width="90"> <div align="center">remark</div></th>
-    <th width="90"> <div align="center">totalCredit</div></th>
-    <th width="90"> <div align="center">courseCon</div></th>
-    <th width="90"> <div align="center">midDate</div></th>
-    <th width="90"> <div align="center">midTime</div></th>
-    <th width="90"> <div align="center">finDate</div></th>
-    <th width="90"> <div align="center">finTime</div></th>
-    <th width="90"> <div align="center">section</div></th>
-    <th width="90"> <div align="center">teachType</div></th>
-    <th width="90"> <div align="center">day</div></th>
-    <th width="90"> <div align="center">teachTime</div></th>
-    <th width="90"> <div align="center">building</div></th>
-    <th width="90"> <div align="center">roomNo</div></th>
-    <th width="90"> <div align="center">instructor</div></th>
-    <th width="90"> <div align="center">totalRegis</div></th>
+    <th> <div align="center">Course Code </div></th>
+    <th> <div align="center">Name Thai </div></th>
+    <th> <div align="center">Name Eng </div></th>
+    <th> <div align="center">facCode</div></th>
+    <th> <div align="center">program</div></th>
+    <th> <div align="center">acadYear</div></th>
+    <th> <div align="center">semester</div></th>
+    <th> <div align="center">remark</div></th>
+    <th> <div align="center">totalCredit</div></th>
+    <th> <div align="center">courseCon</div></th>
+    <th> <div align="center">midDate</div></th>
+    <th> <div align="center">midTime</div></th>
+    <th> <div align="center">finDate</div></th>
+    <th> <div align="center">finTime</div></th>
+    <th> <div align="center">section</div></th>
+    <th> <div align="center">teachType</div></th>
+    <th> <div align="center">day</div></th>
+    <th> <div align="center">teachTime</div></th>
+    <th> <div align="center">building</div></th>
+    <th> <div align="center">roomNo</div></th>
+    <th> <div align="center">instructor</div></th>
+    <th> <div align="center">totalRegis</div></th>
   </tr>
 
 <?php
