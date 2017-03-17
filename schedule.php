@@ -79,14 +79,14 @@ require("page_header.php");
     <div class="container">
     <div class="row">
 
-        <div class="col-md-1"></div>
+        <!-- <div class="col-md-1"></div> -->
 
         <!-- scheduler div -->
-        <div class="col-md-7 widget">
+        <div class="col-md-8 widget">
 
             <!-- BootStrap Scheduler -->
-            <div class="table-responsive">          
-                <table class="table">
+            <div class="table-responsive" style="font-color:white;">          
+                <table class="table" >
                     <thead>
                         <tr id="thead_parent">
                             <th style="width: 15%;">Date\Time</th>
@@ -193,10 +193,10 @@ require("page_header.php");
         </script>
 
         <!-- space between schedule and search engine -->
-        <div class="col-md-1">
+        <!-- <div class="col-md-1">
             
         </div>
-
+ -->
 
 
         <!-- search engine div -->
@@ -240,9 +240,9 @@ require("page_header.php");
                                         <!-- <span class="glyphicon glyphicon-search"></span> -->
                                         <form METHOD=POST ACTION="schedule.php">
                                           <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" NAME="courseSearch" value="search course">
+                                            <input type="text" class="form-control" placeholder="Search" NAME="courseSearch">
                                             <div class="input-group-btn">
-                                                <button class="btn btn-default" type="submit" value="Search">
+                                                <button class="btn btn-default" type="submit" value="Search" style="height:35px;">
                                                     <i class="glyphicon glyphicon-search"></i>
                                                 </button>
                                             </div>
@@ -291,11 +291,12 @@ require("page_header.php");
             <!-- Query result -->
             
             <div class="row" id="query_result" style="position: relative;">
-                <section class="widget">
+                <!-- <section class="widget"> -->
                     <div class="query_result">
+                        <div class="widget">
 
                         <div style="margin-top : 10px;
-                                    padding: 15px;
+                                    /*padding: 15px;*/
                                     position: relative;">
                         <!-- <section class="widget"> -->
 
@@ -334,8 +335,9 @@ require("page_header.php");
                         <div class="well">Basic Well</div>
                     </div>
                     <!-- end query result div -->
+                    </div>
 
-                </section>
+                <!-- </section> -->
                 </div>
             </div>
             <!-- End Query result -->
