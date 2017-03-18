@@ -258,6 +258,7 @@ require("page_header.php");
 
 
 
+
                             <!--         <div class="form-group has-success has-feedback">
                           <label class="control-label" for="inputSuccess2">Input with success</label>
                           <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
@@ -365,7 +366,7 @@ require("page_header.php");
                                     position: relative;">
                         <!-- <section class="widget"> -->
 
-                        <div class="well" data-toggle="tooltip" title="Select to find">Basic Well</div>
+                        <!-- <div class="well" data-toggle="tooltip" title="Select to find">Basic Well</div> -->
                         <!-- <div class="panel-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -384,7 +385,7 @@ require("page_header.php");
 
                         </div> -->
 
-                        <!-- query result test -->
+                        <!-- query result  -->
 
                          <?php
                         for($i=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
@@ -392,13 +393,20 @@ require("page_header.php");
 
                             <!-- loop -->
                             <div class="panel panel-default">
-                                <div class="panel-heading"><?php echo $searchedCoursesDetails['courseCode'][$i];?> <?php echo $searchedCoursesDetails['nameEng'][$i];?></div>
+                                <div class="panel-heading">
+                                    <p style="font-weight: bold;">
+                                    <?php echo $searchedCoursesDetails['courseCode'][$i];?>
+                                    <?php echo $searchedCoursesDetails['nameEng'][$i];?>
+                                    </p>   
+                                </div>
                                 <div class="panel-body">
+                                    <p>
                                     <?php echo $searchedCoursesDetails['section'][$i];?>
                                     <?php echo $searchedCoursesDetails['day'][$i];?>
                                     <?php echo $searchedCoursesDetails['teachTime'][$i];?>
-                                    </div>
-                                <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
+                                    </p>
+                                </div>
+                                
                             </div>
 
 
@@ -406,12 +414,64 @@ require("page_header.php");
                          <?php
                          }
                          ?>
+                        <!-- end query result -->
+
+                        <!-- query result test -->
+
+                        <?php
+                        for($i=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
+                        ?>
+
+                            <!-- loop -->
+                            <div class="panel panel-default">
+                            <!-- <div class="widget" style="padding: 5px;"> -->
+
+                                <div class="panel-heading">
+                                    <p class = "query-head">
+                                        <?php echo $searchedCoursesDetails['courseCode'][$i];?>
+                                        <?php echo $searchedCoursesDetails['nameEng'][$i];?>
+                                    </p>   
+                                </div>
+
+                                <?php
+                                for ($j=0; $j<count($searchedCoursesDetails['courseCode'][$i]); $j++){
+
+                                ?>
+
+                                    <div class="panel-body">
+
+                                        <div>
+                                            <p>
+                                                Section <?php echo $searchedCoursesDetails['section'][$i];?>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p style="float: right;">
+                                                <?php echo $searchedCoursesDetails['day'][$i];?>
+                                                <?php echo $searchedCoursesDetails['teachTime'][$i];?>
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+
+                                <?php
+                                }
+                                ?>
+                                <!-- <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div> -->
+                            </div>
+
+
+
+                         <?php
+                         }
+                         ?>
+
                         <!-- end query result test -->
 
 
 
 
-                        <div class="panel panel-default">
+                        <!-- <div class="panel panel-default">
                             <div class="panel-heading">2104111 APPICATION DEVELOPMENT</div>
                             <div class="panel-body">Sec 1 PLC WED 9:00-12:00</div>
                             <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div>
@@ -425,7 +485,7 @@ require("page_header.php");
                         <div class="well">Basic Well</div>
                         <div class="well">Basic Well</div>
                         <div class="well">Basic Well</div>
-                        <div class="well">Basic Well</div>
+                        <div class="well">Basic Well</div> -->
                     </div>
                     <!-- end query result div -->
                     </div>

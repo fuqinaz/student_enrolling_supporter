@@ -20,7 +20,7 @@ require("check_login.php");
                         
                     </td>
                     <td>
-                        <a href="grade_planner.html"><label>&nbsp;&nbsp;&nbsp;&nbsp;Grade Planner&nbsp;&nbsp;&nbsp;&nbsp;</label></a>
+                        <a href="grade_planner.php"><label>&nbsp;&nbsp;&nbsp;&nbsp;Grade Planner&nbsp;&nbsp;&nbsp;&nbsp;</label></a>
                        <!-- <button type="button" class="btn btn-default" onclick="grade_planner.html"><label>Grade Planner</label></button> -->
                     </td>
                     <td>
@@ -42,13 +42,14 @@ require("check_login.php");
                             <span class="caret"></span>
                           </button>
 
-                          <ul class="dropdown-menu ul-logout" style="left:-80; min-width: 140px;">
+                          <ul class="dropdown-menu ul-logout" style="left:-80px; min-width: 140px;">
                             <!-- <li><a href="#">Hi, Prayut Chan.</a></li> -->
                             <!-- <li><a href="#">CSS</a></li> -->
                             <li class="dropdown-header">Hi, Haming</li>
                             <li><a href="#">Log out</a></li>
                           </ul>
                         </div>
+
                     </td>
                 </tr>
             </table>

@@ -58,13 +58,22 @@ p.nav {
 
 }
 
+p.query-head {
+  color: #222;
+  font-weight: bold;
+}
+
+p.query-body {
+  color: #555;
+}
+
 a, a:visited,a:active {
 	color: white;
 
 }
 
 a:hover { 
-    color: #332 !important;
+    color: grey !important;
 }
 
 
