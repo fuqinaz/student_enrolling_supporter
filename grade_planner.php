@@ -125,12 +125,25 @@ require("page_header.php");
 
                         <!-- table data -->
                         <tbody id="estimator_parent">
-                            <tr id="subject_parent" style="width: 30%">
-                                <!-- <td id="subject_child">
-                                </td> -->
-                            </tr>
+                            <!-- <tr id="subject_parent" style="width: 30%">
+                                <td id="subject_child">
+                                </td>
+                            </tr> -->
                             <tr id="grade_parent" style="width: 70%;">
+                                <td>
+                                    CourseName
+                                </td>
                                 <td id="grade_child">
+                                    <ul class="pagination" width="100%">
+                                      <li><a href="#">A</a></li>
+                                      <li><a href="#">B+</a></li>
+                                      <li><a href="#">B</a></li>
+                                      <li><a href="#">C+</a></li>
+                                      <li><a href="#">C</a></li>
+                                      <li><a href="#">D</a></li>
+                                      <li><a href="#">F</a></li>
+                                      <li><a href="#">W</a></li>
+                                    </ul>
                                 </td>
                             </tr>
                         </tbody>

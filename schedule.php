@@ -385,36 +385,7 @@ require("page_header.php");
 
                         </div> -->
 
-                        <!-- query result  -->
-
-                         <?php
-                        for($i=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
-                        ?>
-
-                            <!-- loop -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <p style="font-weight: bold;">
-                                    <?php echo $searchedCoursesDetails['courseCode'][$i];?>
-                                    <?php echo $searchedCoursesDetails['nameEng'][$i];?>
-                                    </p>   
-                                </div>
-                                <div class="panel-body">
-                                    <p>
-                                    <?php echo $searchedCoursesDetails['section'][$i];?>
-                                    <?php echo $searchedCoursesDetails['day'][$i];?>
-                                    <?php echo $searchedCoursesDetails['teachTime'][$i];?>
-                                    </p>
-                                </div>
-                                
-                            </div>
-
-
-
-                         <?php
-                         }
-                         ?>
-                        <!-- end query result -->
+                       
 
                         <!-- query result test -->
 
@@ -446,9 +417,15 @@ require("page_header.php");
                                             </p>
                                         </div>
                                         <div>
-                                            <p style="float: right;">
-                                                <?php echo $searchedCoursesDetails['day'][$i];?>
-                                                <?php echo $searchedCoursesDetails['teachTime'][$i];?>
+                                            <p>
+                                                <?php
+                                                if ($searchedCoursesDetails['teachTime'][$i]=="AR") {
+                                                    echo "The schedule will be declared later";
+                                                } else {
+                                                    echo $searchedCoursesDetails['day'][$i];
+                                                    echo $searchedCoursesDetails['teachTime'][$i];
+                                                }?>
+                                                
                                             </p>
                                         </div>
                                         
@@ -468,7 +445,7 @@ require("page_header.php");
 
                         <!-- end query result test -->
 
-
+                        <!-- end query result -->
 
 
                         <!-- <div class="panel panel-default">
