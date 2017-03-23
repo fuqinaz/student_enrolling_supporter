@@ -1,5 +1,5 @@
 <?php
-$conn = mysql_connect("127.0.0.1","root","");
+$conn = mysql_connect("127.0.0.1","root","root");
 mysql_select_db("student_enrolling_supporter");
 mysql_query("SET NAMES 'utf8' COLLATE 'utf8_general_ci';");
 ?>
