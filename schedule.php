@@ -31,6 +31,10 @@ require("page_header.php");
         <link rel="stylesheet" href="MyStyle.css" type="text/css">
     <!-- End Own style and js -->
 
+    <!-- from chula expo -->
+        <!-- <link rel="stylesheet" href="application.min.css" type="text/css"> -->
+    <!-- end chula expo -->
+
     <!-- code for hover bubble -->
     <script>
         $(document).ready(function(){
@@ -82,14 +86,23 @@ require("page_header.php");
         <!-- <div class="col-md-1"></div> -->
 
         <!-- scheduler div -->
-        <div class="col-md-8 widget">
+        
+
+        <div class="col-md-8 ">
 
             <!-- BootStrap Scheduler -->
 
-            <!-- <div class="table-responsive" style="font-color:white;">
+            <!-- <div class="table-responsive" style="font-color:white;">          
                 <table class="table" > -->
 
-            <div class="table-responsive">
+            
+            
+            <div class="table-responsive widget row">
+
+                <!-- <legend>
+                    Schedule
+                </legend>
+                 -->
                 <table class="table">
 
                     <thead>
@@ -139,7 +152,7 @@ require("page_header.php");
                                 app dev ie<br>
 
                             </td>
-                            <td></td>
+                            <td onclick="grade_planner.php"></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -183,9 +196,87 @@ require("page_header.php");
                 </table>
 
 
+                <button type="button" class="btn btn-default" style="float:right; min-width: 80px;">Save</button>
+                &nbsp;&nbsp;
+                <button type="button" class="btn btn-default" style="float:right; min-width: 80px;">Reset</button>
 
               </div>
             <!-- End Bootstrap Scheduler -->
+
+
+            <!-- query -->
+
+                <?php
+                //show searched course
+                $searchedCoursesDetails = array(
+                    "coursePID"=>array(),
+                    "courseCode"=>array(),
+                    "nameThai"=>array(),
+                    "nameEng"=>array(),
+                    "facCode"=>array(),
+                    "program"=>array(),
+                    "acadYear"=>array(),
+                    "semester"=>array(),
+                    "remark"=>array(),
+                    "totalCredit"=>array(),
+                    "courseCondition"=>array(),
+                    "midDate"=>array(),
+                    "midTime"=>array(),
+                    "finDate"=>array(),
+                    "finTime"=>array(),
+                    "section"=>array(),
+                    "teachType"=>array(),
+                    "day"=>array(),
+                    "teachTime"=>array(),
+                    "building"=>array(),
+                    "roomNo"=>array(),
+                    "instructor"=>array(),
+                    "totalRegis"=>array()
+                    );
+                require("connection.php");
+                $semester = 2;
+                $query = "SELECT * FROM course WHERE
+                    Semester = '".$semester."' AND
+                    (NameEng LIKE '%".$courseSearch."%' OR
+                    NameThai LIKE '%".$courseSearch."%' OR
+                    CourseCode LIKE '%".$courseSearch."%')";
+                $result = mysql_query($query);
+                for($i=0; $list=mysql_fetch_array($result); $i++){
+                    $searchedCoursesDetails['coursePID'][$i] = $list['CoursePID'];
+                    $searchedCoursesDetails['courseCode'][$i] = $list['CourseCode'];
+                    $searchedCoursesDetails['nameThai'][$i] = $list['NameThai'];
+                    $searchedCoursesDetails['nameEng'][$i] = $list['NameEng'];
+                    $searchedCoursesDetails['facCode'][$i] = $list['FacCode'];
+                    $searchedCoursesDetails['program'][$i] = $list['Program'];
+                    $searchedCoursesDetails['acadYear'][$i] = $list['AcadYear'];
+                    $searchedCoursesDetails['semester'][$i] = $list['Semester'];
+                    $searchedCoursesDetails['remark'][$i] = $list['Remark'];
+                    $searchedCoursesDetails['totalCredit'][$i] = $list['TotalCredit'];
+                    $searchedCoursesDetails['courseCondition'][$i] = $list['CourseCondition'];
+                    $searchedCoursesDetails['midDate'][$i] = $list['MidDate'];
+                    $searchedCoursesDetails['midTime'][$i] = $list['MidTime'];
+                    $searchedCoursesDetails['finDate'][$i] = $list['FinDate'];
+                    $searchedCoursesDetails['finTime'][$i] = $list['FinTime'];
+                    $searchedCoursesDetails['section'][$i] = $list['Section'];
+                    $searchedCoursesDetails['teachType'][$i] = $list['TeachType'];
+                    $searchedCoursesDetails['day'][$i] = $list['Day'];
+                    $searchedCoursesDetails['teachTime'][$i] = $list['TeachTime'];
+                    $searchedCoursesDetails['building'][$i] = $list['Building'];
+                    $searchedCoursesDetails['roomNo'][$i] = $list['RoomNo'];
+                    $searchedCoursesDetails['instructor'][$i] = $list['Instructor'];
+                    $searchedCoursesDetails['totalRegis'][$i] = $list['TotalRegis'];
+                }
+                ?>
+
+            <!-- end query -->
+
+
+            <!-- data details -->
+            <div class = "row widget">
+                
+            </div>
+            <!-- end data detail -->
+
 
 
 
@@ -200,7 +291,7 @@ require("page_header.php");
         <!-- space between schedule and search engine -->
 
         <!-- <div class="col-md-1">
-
+            
 =======
         <div class="col-md-1">
 
@@ -241,14 +332,14 @@ require("page_header.php");
                          //Search Course
                          $courseSearch = $_POST['courseSearch'];
                          // echo $courseSearch;
-
+                         
                          ?>
 
-                        <form METHOD=POST ACTION="schedule.php">
+                        <form METHOD=POST ACTION="schedule.php" ">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" NAME="courseSearch" >
+                                <input type="text" class="input-transparent form-control" placeholder="Search" NAME="courseSearch" >
                                 <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit" value="Search" style="height:35px;">
+                                    <button class="btn btn-default" type="submit" value="Search" style="height:34px; top:-7px">
                                         <i class="glyphicon glyphicon-search"></i>
                                     </button>
                                 </div>
@@ -287,77 +378,6 @@ require("page_header.php");
             </div>
             <!-- End search tool div -->
 
-            <!-- query -->
-
-                <?php
-                //show searched course
-                //if(false)ใส่ไว้ให้มันไม่ทำเฉยๆ กูงง
-                if(strlen($courseSearch) >2){
-                //if(isset($courseSearch)){
-                  $searchedCoursesDetails = array(
-                      "coursePID"=>array(),
-                      "courseCode"=>array(),
-                      "nameThai"=>array(),
-                      "nameEng"=>array(),
-                      "facCode"=>array(),
-                      "program"=>array(),
-                      "acadYear"=>array(),
-                      "semester"=>array(),
-                      "remark"=>array(),
-                      "totalCredit"=>array(),
-                      "courseCondition"=>array(),
-                      "midDate"=>array(),
-                      "midTime"=>array(),
-                      "finDate"=>array(),
-                      "finTime"=>array(),
-                      "section"=>array(),
-                      "teachType"=>array(),
-                      "day"=>array(),
-                      "teachTime"=>array(),
-                      "building"=>array(),
-                      "roomNo"=>array(),
-                      "instructor"=>array(),
-                      "totalRegis"=>array()
-                      );
-                  require("connection.php");
-                  $semester = 2;
-                  $query = "SELECT * FROM course WHERE
-                      Semester = '".$semester."' AND
-                      (NameEng LIKE '%".$courseSearch."%' OR
-                      NameThai LIKE '%".$courseSearch."%' OR
-                      CourseCode LIKE '%".$courseSearch."%')";
-                  $result = mysql_query($query);
-                  for($i=0; $list=mysql_fetch_array($result); $i++){
-                      $searchedCoursesDetails['coursePID'][$i] = $list['CoursePID'];
-                      $searchedCoursesDetails['courseCode'][$i] = $list['CourseCode'];
-                      $searchedCoursesDetails['nameThai'][$i] = $list['NameThai'];
-                      $searchedCoursesDetails['nameEng'][$i] = $list['NameEng'];
-                      $searchedCoursesDetails['facCode'][$i] = $list['FacCode'];
-                      $searchedCoursesDetails['program'][$i] = $list['Program'];
-                      $searchedCoursesDetails['acadYear'][$i] = $list['AcadYear'];
-                      $searchedCoursesDetails['semester'][$i] = $list['Semester'];
-                      $searchedCoursesDetails['remark'][$i] = $list['Remark'];
-                      $searchedCoursesDetails['totalCredit'][$i] = $list['TotalCredit'];
-                      $searchedCoursesDetails['courseCondition'][$i] = $list['CourseCondition'];
-                      $searchedCoursesDetails['midDate'][$i] = $list['MidDate'];
-                      $searchedCoursesDetails['midTime'][$i] = $list['MidTime'];
-                      $searchedCoursesDetails['finDate'][$i] = $list['FinDate'];
-                      $searchedCoursesDetails['finTime'][$i] = $list['FinTime'];
-                      $searchedCoursesDetails['section'][$i] = $list['Section'];
-                      $searchedCoursesDetails['teachType'][$i] = $list['TeachType'];
-                      $searchedCoursesDetails['day'][$i] = $list['Day'];
-                      $searchedCoursesDetails['teachTime'][$i] = $list['TeachTime'];
-                      $searchedCoursesDetails['building'][$i] = $list['Building'];
-                      $searchedCoursesDetails['roomNo'][$i] = $list['RoomNo'];
-                      $searchedCoursesDetails['instructor'][$i] = $list['Instructor'];
-                      $searchedCoursesDetails['totalRegis'][$i] = $list['TotalRegis'];
-                  }
-                }
-
-                ?>
-
-            <!-- end query -->
-
 
             <!-- Query result -->
 
@@ -390,7 +410,7 @@ require("page_header.php");
 
                         </div> -->
 
-
+                       
 
                         <!-- query result test -->
 
@@ -406,7 +426,7 @@ require("page_header.php");
                                     <p class = "query-head">
                                         <?php echo $searchedCoursesDetails['courseCode'][$i];?>
                                         <?php echo $searchedCoursesDetails['nameEng'][$i];?>
-                                    </p>
+                                    </p>   
                                 </div>
 
                                 <?php
@@ -417,12 +437,20 @@ require("page_header.php");
                                     <div class="panel-body">
 
                                         <div>
+                                            <button type="button" class="btn btn-default btn-sm" style = "float: right;
+                                                    height: 20px;
+                                                    padding-top:  0px;">
+                                                Add
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
                                             <p>
                                                 Section <?php echo $searchedCoursesDetails['section'][$i];?>
                                             </p>
+                                            
                                         </div>
+
                                         <div>
-                                            <p>
+                                            <p style="font-size: 14px; font-color: #555;">
                                                 <?php
                                                 if ($searchedCoursesDetails['teachTime'][$i]=="AR") {
                                                     echo "The schedule will be declared later";
@@ -430,10 +458,10 @@ require("page_header.php");
                                                     echo $searchedCoursesDetails['day'][$i];
                                                     echo $searchedCoursesDetails['teachTime'][$i];
                                                 }?>
-
+                                                
                                             </p>
                                         </div>
-
+                                        
                                     </div>
 
                                 <?php
@@ -502,10 +530,8 @@ require("page_header.php");
  <?php
  //Search Course
  $courseSearch = $_POST['courseSearch'];
- echo $courseSearch."<br>";
- echo strlen($courseSearch);
- //echo $courseSearch.count_chars;
-
+ echo $courseSearch;
+ 
  ?>
  <br>
 
@@ -513,10 +539,12 @@ require("page_header.php");
 
 <!-- enf copied from ming -->
 
+
+<br>
 <?php
 //Search Course
-// $courseSearch = $_POST['courseSearch'];
-// echo $courseSearch;
+$courseSearch = $_POST['courseSearch'];
+echo $courseSearch;
 
 ?>
 <br>
@@ -527,67 +555,64 @@ require("page_header.php");
 
 <?php
 //show searched course
-if(strlen($courseSearch) >2){
-  $searchedCoursesDetails = array(
-      "coursePID"=>array(),
-      "courseCode"=>array(),
-      "nameThai"=>array(),
-      "nameEng"=>array(),
-      "facCode"=>array(),
-      "program"=>array(),
-      "acadYear"=>array(),
-      "semester"=>array(),
-      "remark"=>array(),
-      "totalCredit"=>array(),
-      "courseCondition"=>array(),
-      "midDate"=>array(),
-      "midTime"=>array(),
-      "finDate"=>array(),
-      "finTime"=>array(),
-      "section"=>array(),
-      "teachType"=>array(),
-      "day"=>array(),
-      "teachTime"=>array(),
-      "building"=>array(),
-      "roomNo"=>array(),
-      "instructor"=>array(),
-      "totalRegis"=>array()
-      );
-  require("connection.php");
-  $semester = 2;
-  $query = "SELECT * FROM course WHERE
-      Semester = '".$semester."' AND
-      (NameEng LIKE '%".$courseSearch."%' OR
-      NameThai LIKE '%".$courseSearch."%' OR
-      CourseCode LIKE '%".$courseSearch."%')";
-  $result = mysql_query($query);
-  for($i=0; $list=mysql_fetch_array($result); $i++){
-      $searchedCoursesDetails['coursePID'][$i] = $list['CoursePID'];
-      $searchedCoursesDetails['courseCode'][$i] = $list['CourseCode'];
-      $searchedCoursesDetails['nameThai'][$i] = $list['NameThai'];
-      $searchedCoursesDetails['nameEng'][$i] = $list['NameEng'];
-      $searchedCoursesDetails['facCode'][$i] = $list['FacCode'];
-      $searchedCoursesDetails['program'][$i] = $list['Program'];
-      $searchedCoursesDetails['acadYear'][$i] = $list['AcadYear'];
-      $searchedCoursesDetails['semester'][$i] = $list['Semester'];
-      $searchedCoursesDetails['remark'][$i] = $list['Remark'];
-      $searchedCoursesDetails['totalCredit'][$i] = $list['TotalCredit'];
-      $searchedCoursesDetails['courseCondition'][$i] = $list['CourseCondition'];
-      $searchedCoursesDetails['midDate'][$i] = $list['MidDate'];
-      $searchedCoursesDetails['midTime'][$i] = $list['MidTime'];
-      $searchedCoursesDetails['finDate'][$i] = $list['FinDate'];
-      $searchedCoursesDetails['finTime'][$i] = $list['FinTime'];
-      $searchedCoursesDetails['section'][$i] = $list['Section'];
-      $searchedCoursesDetails['teachType'][$i] = $list['TeachType'];
-      $searchedCoursesDetails['day'][$i] = $list['Day'];
-      $searchedCoursesDetails['teachTime'][$i] = $list['TeachTime'];
-      $searchedCoursesDetails['building'][$i] = $list['Building'];
-      $searchedCoursesDetails['roomNo'][$i] = $list['RoomNo'];
-      $searchedCoursesDetails['instructor'][$i] = $list['Instructor'];
-      $searchedCoursesDetails['totalRegis'][$i] = $list['TotalRegis'];
-  }
+$searchedCoursesDetails = array(
+    "coursePID"=>array(),
+    "courseCode"=>array(),
+    "nameThai"=>array(),
+    "nameEng"=>array(),
+    "facCode"=>array(),
+    "program"=>array(),
+    "acadYear"=>array(),
+    "semester"=>array(),
+    "remark"=>array(),
+    "totalCredit"=>array(),
+    "courseCondition"=>array(),
+    "midDate"=>array(),
+    "midTime"=>array(),
+    "finDate"=>array(),
+    "finTime"=>array(),
+    "section"=>array(),
+    "teachType"=>array(),
+    "day"=>array(),
+    "teachTime"=>array(),
+    "building"=>array(),
+    "roomNo"=>array(),
+    "instructor"=>array(),
+    "totalRegis"=>array()
+    );
+require("connection.php");
+$semester = 2;
+$query = "SELECT * FROM course WHERE
+    Semester = '".$semester."' AND
+    (NameEng LIKE '%".$courseSearch."%' OR
+    NameThai LIKE '%".$courseSearch."%' OR
+    CourseCode LIKE '%".$courseSearch."%')";
+$result = mysql_query($query);
+for($i=0; $list=mysql_fetch_array($result); $i++){
+    $searchedCoursesDetails['coursePID'][$i] = $list['CoursePID'];
+    $searchedCoursesDetails['courseCode'][$i] = $list['CourseCode'];
+    $searchedCoursesDetails['nameThai'][$i] = $list['NameThai'];
+    $searchedCoursesDetails['nameEng'][$i] = $list['NameEng'];
+    $searchedCoursesDetails['facCode'][$i] = $list['FacCode'];
+    $searchedCoursesDetails['program'][$i] = $list['Program'];
+    $searchedCoursesDetails['acadYear'][$i] = $list['AcadYear'];
+    $searchedCoursesDetails['semester'][$i] = $list['Semester'];
+    $searchedCoursesDetails['remark'][$i] = $list['Remark'];
+    $searchedCoursesDetails['totalCredit'][$i] = $list['TotalCredit'];
+    $searchedCoursesDetails['courseCondition'][$i] = $list['CourseCondition'];
+    $searchedCoursesDetails['midDate'][$i] = $list['MidDate'];
+    $searchedCoursesDetails['midTime'][$i] = $list['MidTime'];
+    $searchedCoursesDetails['finDate'][$i] = $list['FinDate'];
+    $searchedCoursesDetails['finTime'][$i] = $list['FinTime'];
+    $searchedCoursesDetails['section'][$i] = $list['Section'];
+    $searchedCoursesDetails['teachType'][$i] = $list['TeachType'];
+    $searchedCoursesDetails['day'][$i] = $list['Day'];
+    $searchedCoursesDetails['teachTime'][$i] = $list['TeachTime'];
+    $searchedCoursesDetails['building'][$i] = $list['Building'];
+    $searchedCoursesDetails['roomNo'][$i] = $list['RoomNo'];
+    $searchedCoursesDetails['instructor'][$i] = $list['Instructor'];
+    $searchedCoursesDetails['totalRegis'][$i] = $list['TotalRegis'];
 }
-
 ?>
 
 

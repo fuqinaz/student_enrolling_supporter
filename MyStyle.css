@@ -1,13 +1,6 @@
 body {
-/*	background-image: url(11108.jpg)
-background-repeat:no-repeat;
-    background-size:100% 100vh;
-background-size: 100%;*/
-    background: black; /* For browsers that do not support gradients */    
-    /*background: -webkit-linear-gradient(left top, black, #555);*/ /* For Safari 5.1 to 6.0 */
-    /*background: -o-linear-gradient(bottom right, black, #555);*/ /* For Opera 11.1 to 12.0 */
-    /*background: -moz-linear-gradient(bottom right, black, #555);*/ /* For Firefox 3.6 to 15 */
-    /*background: linear-gradient(to bottom right, black, #555);*/ /* Standard syntax (must be last) */
+
+    background: black;
     font-weight: 300;
     padding-bottom: 100px;
     background-color: #154265 20%;
@@ -16,8 +9,13 @@ background-size: 100%;*/
     background-image: -webkit-radial-gradient(10% 0, farthest-side ellipse, #e0659b 60%, #4f3a85);
     background-image: -moz-radial-gradient(10% 0, farthest-side ellipse, #e0659b 60%, #4f3a85);
     background-attachment: fixed, fixed;
+    /*font-family: myFirstFont;*/
 }
 
+/*body {
+    background: white;
+}
+*/
 /*grey transparent background*/
 .widget {
 	   border-radius: 3px;
@@ -51,7 +49,7 @@ background-size: 100%;*/
 }
 
 p {
-	color: #111
+	color: #333;
 }
 
 p.nav {
@@ -71,6 +69,17 @@ a, a:visited,a:active {
 	color: white;
 
 }
+
+.account {
+    width: 180px;
+    background: rgba(51, 51, 51, 0.85);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 3px !important;
+    color: #fff;
+}
+
+
 
 a:hover { 
     color: grey !important;
@@ -119,14 +128,42 @@ td,th {
 
 .btn {
     transition: background-color 0.2s;
+    margin: 5px;
 }
 
-.btn:focus, .btn:hover {
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.btn-default {
+    color: #fff;
+    background-color: #666;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.btn-default:hover {
+    color: #fff;
+    background-color: #4d4d4d;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/*.btn:focus, .btn:hover {
   color: grey !important;
+}*/
+
+.btn:hover, .btn:focus {
+    color: #fff;
+    -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.08);
 }
 
 /*end bootstrap overwrite*/
 
+.table-schedu {
+  min-width: 690px;
+}
 
 /*for adding glyphicon in form*/
 /* enable absolute positioning */
@@ -165,3 +202,30 @@ td,th {
     align-items: center;
     top:50%;
 }
+
+.input-transparent {
+    border: none;
+    color: #f8f8f8;
+    background-color: rgba(51, 51, 51, 0.4);
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 13px;
+    line-height: 1.728571429;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+

@@ -42,7 +42,7 @@ require("check_login.php");
                             <span class="caret"></span>
                           </button>
 
-                          <ul class="dropdown-menu ul-logout" style="left:-80px; min-width: 140px;">
+                          <ul class="dropdown-menu ul-logout dropdown-menu account" style="left:-80px; min-width: 140px;">
                             <!-- <li><a href="#">Hi, Prayut Chan.</a></li> -->
                             <!-- <li><a href="#">CSS</a></li> -->
                             <li class="dropdown-header">Hi, Haming</li>
