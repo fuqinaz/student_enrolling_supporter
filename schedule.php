@@ -630,7 +630,7 @@ if(true){
       }
     }
     ?>
-  </tabel>
+  <!-- </tabel> -->
   <?php
   //ปิด if(isset)
   }
