@@ -1,5 +1,13 @@
 <HTML>
 
+  <?php
+  session_start();
+  if($_SESSION['userID']!="")
+  {
+  	header("refresh:0; url=schedule.php");
+  }
+  ?>
+
 <HEAD>
        <title>Scheduler</title>
 
@@ -11,7 +19,7 @@
     <!-- end dhtmlx -->
 
    <!---BootStrap-->
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
         <!-- REsponsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
@@ -30,7 +38,7 @@
     <!-- code for hover bubble -->
     <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
     <!-- end code for hover bubble -->
@@ -50,7 +58,7 @@
 			</table>
 			<INPUT TYPE="submit" value="LOGIN">
 		</FORM>
-		
+
 	</center>
 
 
