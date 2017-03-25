@@ -482,7 +482,6 @@ require("page_header.php");
             </div>
             <!-- End search tool div -->
 
-
             <!-- Query result -->
 
             <div class="row" id="query_result" style="position: relative;">
@@ -583,69 +582,143 @@ require("page_header.php");
                             ?>
                         <!-- end query -->
 
-                        <!-- query result test -->
+                        <!-- manage & show searched data-->
                         <?php
-                        for($i=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
-                            if($searchedCoursesDetails['courseCode'][$i]!=$searchedCoursesDetails['courseCode'][$i-1]){
+                        if(isset($searchedCoursesDetails['coursePID'][0])){
+                          for($i=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
+                            $showSearched = array(
+                              "coursePID"=>array(),
+                              "courseCode"=>array(),
+                              "nameThai"=>array(),
+                              "nameEng"=>array(),
+                              "facCode"=>array(),
+                              "program"=>array(),
+                              "acadYear"=>array(),
+                              "semester"=>array(),
+                              "remark"=>array(),
+                              "totalCredit"=>array(),
+                              "courseCondition"=>array(),
+                              "midDate"=>array(),
+                              "midTime"=>array(),
+                              "finDate"=>array(),
+                              "finTime"=>array(),
+                              "section"=>array(),
+                              "teachType"=>array(),
+                              "day"=>array(),
+                              "teachTime"=>array(),
+                              "building"=>array(),
+                              "roomNo"=>array(),
+                              "instructor"=>array(),
+                              "totalRegis"=>array()
+                            );
+                          }
 
-                        ?>
-                            <!-- loop -->
-                            <div class="panel panel-default">
-                            <!-- <div class="widget" style="padding: 5px;"> -->
-                                <!-- panel head -->
-                                <div class="panel-heading">
+                          //for initial
+                          $showSearched['courseCode'][0] = $searchedCoursesDetails['courseCode'][0];
+                          $showSearched['nameEng'][0] = $searchedCoursesDetails['nameEng'][0];
+                          $showSearched['section'][0] = $searchedCoursesDetails['section'][0];
+                          $showSearched['teachType'][0] = $searchedCoursesDetails['teachType'][0];
+                          $showSearched['day'][0] = $searchedCoursesDetails['day'][0];
+                          $showSearched['teachTime'][0] = $searchedCoursesDetails['teachTime'][0];
+                          ?>
+
+                          <?php
+                          for($i=1,$j=0; $i<count($searchedCoursesDetails['coursePID']); $i++){
+                            if($searchedCoursesDetails['courseCode'][$i]!=$showSearched['courseCode'][$j]){
+                              $j++;
+                              $showSearched['courseCode'][$j] = $searchedCoursesDetails['courseCode'][$i];
+                              $showSearched['nameEng'][$j] = $searchedCoursesDetails['nameEng'][$i];
+                              $showSearched['section'][$j] = $searchedCoursesDetails['section'][$i];
+                              $showSearched['teachType'][$j] = $searchedCoursesDetails['teachType'][$i];
+                              $showSearched['day'][$j] = $searchedCoursesDetails['day'][$i];
+                              $showSearched['teachTime'][$j] = $searchedCoursesDetails['teachTime'][$i];
+                            }
+                            else{
+                              if($searchedCoursesDetails['section'][$i]!=$showSearched['section'][$j]){
+                                $j++;
+                                $showSearched['courseCode'][$j] = $searchedCoursesDetails['courseCode'][$i];
+                                $showSearched['nameEng'][$j] = $searchedCoursesDetails['nameEng'][$i];
+                                $showSearched['section'][$j] = $searchedCoursesDetails['section'][$i];
+                                $showSearched['teachType'][$j] = $searchedCoursesDetails['teachType'][$i];
+                                $showSearched['day'][$j] = $searchedCoursesDetails['day'][$i];
+                                $showSearched['teachTime'][$j] = $searchedCoursesDetails['teachTime'][$i];
+                              }
+                              else{
+                                $showSearched['teachType'][$j] .= ",".$searchedCoursesDetails['teachType'][$i];
+                                $showSearched['day'][$j] .= ",".$searchedCoursesDetails['day'][$i];
+                                $showSearched['teachTime'][$j] .= ",".$searchedCoursesDetails['teachTime'][$i];
+                              }
+                            }
+                          }
+                          ?>
+
+                          <!-- show searched data-->
+                          <!-- <div class="panel panel-default"> -->
+                            <?php
+                            for($i=0; $i<count($showSearched['courseCode']); $i++){
+                              if($showSearched['courseCode'][$i]!=$showSearched['courseCode'][$i-1]){
+                                if($i>0) echo "</div></div>";
+                            ?>
+                                <div class="panel panel-default">
+                                  <!-- panel head -->
+                                  <div class="panel-heading">
                                     <p class = "query-head">
-                                        <?php echo $searchedCoursesDetails['courseCode'][$i];?>
-                                        <?php echo $searchedCoursesDetails['nameEng'][$i];?>
+                                      <?php echo $showSearched['courseCode'][$i].$showSearched['nameEng'][$i]; ?>
                                     </p>
-                                </div>
-                                <!-- end panel head -->
+                                  </div>
+                                  <!-- end panel header -->
 
-                                <!-- panel body -->
-                                <div class="panel-body">
-                                      <?php
-                                    }
-                                      ?>
-                                    <!-- add button -->
+                                  <!-- panel body   -->
+                                  <div class="panel-body">
                                     <button type="button" class="btn btn-default btn-sm" style = "float: right;
-                                                                                                    height: 20px;
-                                                                                                    padding-top:  0px;">
+                                                                                                  height: 20px;
+                                                                                                  padding-top:  0px;">
                                         Add
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </button>
-                                    <!-- section -->
-                                    <p>
-                                        Section <?php echo $searchedCoursesDetails['section'][$i];?>
-                                    </p>
-                                    <!-- section detail -->
+                                    <p>Section <?php echo $showSearched['section'][$i];?></p>
                                     <div>
-                                        <p style="font-size: 14px; font-color: #555;">
-                                            <?php
-                                            if ($searchedCoursesDetails['teachTime'][$i]=="AR") {
-                                                echo "The schedule will be declared later";
-                                            } else {
-                                                echo $searchedCoursesDetails['day'][$i];
-                                                echo $searchedCoursesDetails['teachTime'][$i];
-                                            }?>
-                                        </p>
+                                      <p style="font-size: 14px; font-color: #555;">
+                                          <?php
+                                          if ($showSearched['teachTime'][$i]=="AR") {
+                                              echo "The schedule will be declared later";
+                                          } else {
+                                              echo $showSearched['day'][$i];
+                                              echo $showSearched['teachTime'][$i];
+                                          }?>
+                                      </p>
                                     </div>
-                                <!-- <div class="panel-body">Sec 2 PLC FRI 9:00-12:00 </div> -->
-                            <?php
-                            if($searchedCoursesDetails['courseCode'][$i]!=$searchedCoursesDetails['courseCode'][$i-1]){
-                            ?>
-                                </div>
+                                <?php
+                                }
+                                else{
+                                ?>
+                                  <button type="button" class="btn btn-default btn-sm" style = "float: right;
+                                                                                                height: 20px;
+                                                                                                padding-top:  0px;">
+                                      Add
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                  </button>
+                                  <p>Section <?php echo $showSearched['section'][$i];?></p>
+                                  <div>
+                                    <p style="font-size: 14px; font-color: #555;">
+                                        <?php
+                                        if ($showSearched['teachTime'][$i]=="AR") {
+                                            echo "The schedule will be declared later";
+                                        } else {
+                                            echo $showSearched['day'][$i];
+                                            echo $showSearched['teachTime'][$i];
+                                        }?>
+                                    </p>
+                                  </div>
+                              <?php
+                                }
+                              }
+                              ?>
                             </div>
-                            <?php } ?>
-
-
-                         <?php
-                         }
-                         ?>
-
-                        <!-- end query result test -->
-
-                        <!-- end query result -->
-
+                        <?php
+                        //ปิด if(isset)
+                        }?>
+                        <!-- end manage & show searched data -->
 
                         <!-- <div class="panel panel-default">
                             <div class="panel-heading">2104111 APPICATION DEVELOPMENT</div>
@@ -686,7 +759,7 @@ require("page_header.php");
 <!-- for show searched courses -->
 <?php
 //ถ้าจะเอาไปใช้ เปลี่ยนเป็น false มันจะได้ไม่ทำซ้ำ
-if(false){
+if(true){
 ?>
     <?php
   if(isset($searchedCoursesDetails['coursePID'][0])){
