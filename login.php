@@ -11,7 +11,7 @@
     <!-- end dhtmlx -->
 
    <!---BootStrap-->
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
         <!-- REsponsive -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
@@ -30,27 +30,41 @@
     <!-- code for hover bubble -->
     <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
     <!-- end code for hover bubble -->
+
+
 </HEAD>
-<BODY>
+<BODY class="pinkbody">
+
+    <style type="text/css">
+        td,th {
+            color: black !important;
+        }
+    </style>
+
+
 	<center>
-		<FORM METHOD=POST ACTION="login_handler.php">
-			<table>
-				<tr>
-					<td>ID</td>
-					<td><INPUT TYPE="text" NAME="userID"></td>
-				</tr>
-				<tr>
-					<td>password</td>
-					<td><INPUT TYPE="text" NAME="password"></td>
-				</tr>
-			</table>
-			<INPUT TYPE="submit" value="LOGIN">
-		</FORM>
-		
+
+        <div class="conatainer widget single-widget-container" style="    max-width: 50%; min-width: 300px;">
+    		<FORM METHOD=POST ACTION="login_handler.php" style="top:50%;">
+    			<table >
+    				<tr>
+    					<td>ID</td>
+    					<td><INPUT TYPE="text" NAME="userID" ></td>
+    				</tr>
+    				<tr>
+    					<td>password</td>
+    					<td><INPUT TYPE="text" NAME="password"></td>
+    				</tr>
+    			</table>
+                <br>
+    			<INPUT TYPE="submit" value="LOGIN">
+    		</FORM>
+        </div>
+
 	</center>
 
 

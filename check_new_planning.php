@@ -7,7 +7,7 @@
 	$year = 3;
 	$semester = 2;
 
-	$query = "SELECT * FROM planning WHERE StudentID = '$userID' AND Year = '$year' AND Semester = '$semester'";
+	$query = "SELECT * FROM planned WHERE StudentID = '$userID'";
 	$result = mysql_query($query);
 
 	for($i=0; $list=mysql_fetch_array($result); $i++){

@@ -15,9 +15,9 @@ require("check_login.php");
                 <tr>
                     <td>
                         <!-- <button type="button" class="btn btn-default"> -->
-                        <a href="schedule.php"><label>&nbsp;&nbsp;&nbsp;&nbsp;Scheduler&nbsp;&nbsp;&nbsp;&nbsp;</label></a>
+                        <a href="scheduler.php"><label>&nbsp;&nbsp;&nbsp;&nbsp;Scheduler&nbsp;&nbsp;&nbsp;&nbsp;</label></a>
                         <!-- </button> -->
-                        
+
                     </td>
                     <td>
                         <a href="grade_planner.php"><label>&nbsp;&nbsp;&nbsp;&nbsp;Grade Planner&nbsp;&nbsp;&nbsp;&nbsp;</label></a>
@@ -27,7 +27,7 @@ require("check_login.php");
                         <!-- &nbsp;&nbsp;
                         <a href="#">
                             <span class="glyphicon glyphicon-user"></span>
-                        </a> 
+                        </a>
                         &nbsp;&nbsp; -->
 
 
@@ -46,7 +46,7 @@ require("check_login.php");
                             <!-- <li><a href="#">Hi, Prayut Chan.</a></li> -->
                             <!-- <li><a href="#">CSS</a></li> -->
                             <li class="dropdown-header">Hi, Haming</li>
-                            <li><a href="#">Log out</a></li>
+                            <li><a href="logoff.php">Log out</a></li>
                           </ul>
                         </div>
 
@@ -54,8 +54,8 @@ require("check_login.php");
                 </tr>
             </table>
         </div>
-        <div class="col-md-1"></div>    
-        
+        <div class="col-md-1"></div>
+
     </div>
     <!-- End Web Nav -->
 

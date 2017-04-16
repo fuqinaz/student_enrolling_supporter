@@ -22,7 +22,7 @@ if($list=mysql_fetch_array($result))
   	$_SESSION['userPic']=$list['Pic'];
   	$_SESSION['userType']=$list['UserType'];
 
-   	header("refresh: 0; url=schedule.php");
+   	header("refresh: 0; url=scheduler.php");
 
    	ob_end_flush();
 }
